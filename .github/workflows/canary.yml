@@ -22,7 +22,7 @@ jobs:
   # Deploy to GitHub Pages on the Stage Repo
   deploy-to-github-pages:
     name: Deploy GHP(CAN)
-    needs: build-can
+    needs: build-canary
     uses: dr3dr3/devops-via-preso/.github/workflows/reuse-deploy-github-pages.yml@main
     permissions:
       contents: read
