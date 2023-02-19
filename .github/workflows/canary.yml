@@ -1,5 +1,5 @@
 # Continuous Deployment Workflow for Stage
-name: canary-deploy
+name: deploy-to-canary
 run-name: Continuous deployment triggered by ${{ github.event_name }}
 
 on:
