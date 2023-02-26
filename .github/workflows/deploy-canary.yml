@@ -1,6 +1,6 @@
 # Continuous Deployment Workflow for Stage
 name: DEPLOY-TO-CANARY
-run-name: Continuous deployment triggered by ${{ github.event_name }}
+run-name: Continuous delivery triggered for Canary Environment
 
 on:
   # Runs on pushes targeting the default branch
