@@ -22,7 +22,7 @@ jobs:
       id-token: write
     secrets: inherit
 
-  ### Add testing specific for STG (integration, broken links, etc)
+  ### Add testing specific for CAN (pvt, etc)
 
   # Given successful testing then update the build for this environment in GitOps Config
   build-config:
@@ -34,13 +34,4 @@ jobs:
       config-value: ${{ github.event.client_payload.target_ref }}
     secrets: inherit
 
-  # Dispatch to Deploy to Canary Environment
-  dispatch-can:
-    name: Dispatch Canary
-    needs: [continuous-delivery]
-    uses: dr3dr3/ss-pipeline/.github/workflows/continuous-deployment.yml@main
-    with:
-      from-soln: ${{ github.event.client_payload.from_soln }}
-      target-ref: ${{ github.event.client_payload.target_ref }}
-      target-deploy: 'prd'
-    secrets: inherit
+  # No deploy to Production triggered. Run on schedule via cd-scheduler.yml
