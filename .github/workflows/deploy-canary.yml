@@ -34,26 +34,3 @@ jobs:
       config-value: ${{ github.event.client_payload.target_ref }}
     secrets: inherit
   
-  # Mark the release successfully deployed to Canary as the Latest release (for use in Prod deployment)
-  mark-latest:
-    name: Mark this release as latest
-    needs: [continuous-delivery]
-    timeout-minutes: 10
-    runs-on: ubuntu-latest
-    steps:
-      - name: Edit Release
-        env:
-          GH_TOKEN: ${{ github.token }}         
-        run: |
-          gh release edit ${{ github.event.client_payload.target_ref }} --latest
-
-  # Dispatch to Deploy to Production Environment
-  dispatch-prd:
-    name: Dispatch Production
-    needs: [continuous-delivery]
-    uses: dr3dr3/ss-pipeline/.github/workflows/continuous-deployment.yml@main
-    with:
-      from-soln: ${{ github.event.client_payload.from_soln }}
-      target-ref: ${{ github.event.client_payload.target_ref }}
-      target-deploy: 'prd'
-    secrets: inherit
