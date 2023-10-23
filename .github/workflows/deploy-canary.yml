@@ -1,5 +1,5 @@
 name: DEPLOY-TO-CANARY
-run-name: Continuous Deployment for Canary Environment
+run-name: Continuous deployment triggered for Canary environment
 
 on:
   # Runs on pushes targeting the default branch
