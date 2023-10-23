@@ -13,10 +13,11 @@ jobs:
     name: CD
     concurrency:
       group: ${{ github.workflow }}
-      cancel-in-progress: false  
+      cancel-in-progress: false
     uses: dr3dr3/ss-pipeline/.github/workflows/continuous-delivery.yml@main
     with: 
       target-deploy: 'can'
+      site-url: ${{ vars.SITE_URL }}
     permissions:
       contents: read
       pages: write
