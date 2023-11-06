@@ -1,5 +1,5 @@
-name: DEPLOY-TO-CANARY
-run-name: Continuous deployment triggered for Canary environment
+name: DEPLOY-TO-PRODUCTION-BLUE
+run-name: Continuous deployment triggered for Production (Blue) environment
 
 on:
   # Runs on pushes targeting the default branch
@@ -16,7 +16,7 @@ jobs:
       cancel-in-progress: false
     uses: dr3dr3/ss-pipeline/.github/workflows/continuous-delivery.yml@main
     with: 
-      target-deploy: 'can'
+      target-deploy: 'blue'
       site-url: ${{ vars.SITE_URL }}
     permissions:
       contents: read
